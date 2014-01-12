@@ -3,14 +3,18 @@ An On-Demand UI for accessing NPR based on (this tutorial)[http://www.ng-newslet
 
 ## Usage
 
-1. Install the dependencies.   We'll be thinking of two different be using npm for this:
-        grunt-npm install
-That will install all dependencies listed in npm
+### Install the dependencies: grunt deps
 
+### Compile the site during development: grunt compile_dev
+
+### Re-compile on change: grunt watch
+
+### Compile production app: grunt compile_prod
+
+### Start the Express server: nodejs web.js
 
 ## License
 
-Copyright © {{year}} Douglas Wade
+Copyright © 2014 Douglas Wade
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the MIT License; a copy should be provided with the source code.

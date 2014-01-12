@@ -20,6 +20,11 @@ module.exports = (grunt) ->
           'web.js': 'src/web.coffee'
         }
       },
+      bower: {
+        main: {
+          dest: 'bower_components/'
+        }
+      }
       compile_prod: {
         files: {
           'src/app.js': 'src/*.coffee',
@@ -68,14 +73,15 @@ module.exports = (grunt) ->
     watch: {
       coffee: {
         files: ['<%= coffee.compile_dev.files %> '],
-        tasks: ['coffee.compile_dev']
+        tasks: ['compile_dev']
       },
       ng_templates: {
         files: ['<%= html2js.dev.src %>'],
-        tasks: ['html2js.dev']
+        tasks: ['compile_dev']
       }
     }
   })
 
+  grunt.registerTask('deps', ['npm-install', 'bower:main'])
   grunt.registerTask('compile_dev', ['jade:compile', 'html2js:dev', 'coffee:compile_dev'])
   grunt.registerTask('compile_prod', ['jade:compile', 'html2js:prod', 'coffee:compile_prod', 'uglify:dist'])
