@@ -13,21 +13,22 @@ module.exports = (grunt) ->
     coffee: {
       compile_dev: {
         files: {
-          'public/js/app.js': 'src/app.coffee',
-          'public/js/controllers.js': 'src/*Ctrl.coffee',
-          'public/js/directives.js': 'src/nomPlayer.coffee',
+          'public/js/app.js': 'src/js/app.coffee',
+          'public/js/controllers.js': 'src/js/*Ctrl.coffee',
+          'public/js/directives.js': 'src/js/nomPlayer.coffee',
           'routes/index.js': 'routes/index.coffee',
           'web.js': 'src/web.coffee'
         }
       },
       bower: {
         main: {
+          # TODO: dest: 'assets/'
           dest: 'bower_components/'
         }
       }
       compile_prod: {
         files: {
-          'src/app.js': 'src/*.coffee',
+          'src/app.js': 'src/js/*.coffee',
           'routes/index.js': 'routes/index.coffee',
           'web.js': 'src/web.coffee'
         }
@@ -54,15 +55,13 @@ module.exports = (grunt) ->
           }
         },
         files: {
-          'src/templates/nomPlayer.html': 'src/templates/nomPlayer.jade'
+          'public/templates/nomPlayer.html': 'src/templates/nomPlayer.jade'
         }
       }
     },
     uglify: {
       options: {
-        banner: { 
-          '/* <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-        }
+        banner: '/* <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
       },
       dist: {
         files: {

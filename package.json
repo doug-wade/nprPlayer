@@ -7,14 +7,15 @@
     "express": "~3.2.6",
     "grunt": "~0.4.2",
     "grunt-bower": "~0.7.0",
-    "grunt-contrib-coffee": "*",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-coffee": "~0.8.0",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-jade": "~0.9.1",
     "grunt-contrib-stylus": "~0.12.0",
     "grunt-contrib-uglify": "~0.2.7",
-    "grunt-contrib-watch": "*",
+    "grunt-contrib-watch": "~0.5.3",
     "grunt-html2js": "~0.2.4",
-    "grunt-npm-install": "*",
+    "grunt-npm-install": "~0.1.o",
     "jade": "~0.31.2"
   }
 }
