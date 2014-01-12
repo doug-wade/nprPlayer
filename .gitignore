@@ -1,0 +1,7 @@
+*.js.map
+*.js
+*.css
+/node_modules
+/public/lib
+/bower_components
+*.html

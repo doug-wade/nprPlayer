@@ -1,0 +1,5 @@
+div(ng-controller="nomPlayerCtrl")
+  button(ng-click="play()", class="button", ng-show="!playing") Play
+  button(ng-click="stop()", class="button alert", ng-show="playing") Stop
+  p Playing audio: 
+    strong {{ playing }}
