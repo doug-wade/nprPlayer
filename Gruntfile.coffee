@@ -17,6 +17,8 @@ module.exports = (grunt) ->
           'public/js/controllers.js': 'src/js/*Ctrl.coffee',
           'public/js/directives.js': 'src/js/nomPlayer.coffee',
           'routes/index.js': 'routes/index.coffee',
+          'routes/api.js': 'routes/api.coffee',
+          'routes/db_client.js': 'routes/db_client.coffee', 
           'web.js': 'src/web.coffee'
         }
       },

@@ -2,6 +2,7 @@
 
 express = require('express')
 routes = require('./routes/index')
+api = require('./routes/api')
 http = require('http')
 path = require('path')
 app = express()
@@ -33,6 +34,9 @@ if (app.get('env') == 'production')
 
 # serve index and view partials
 app.get('/', routes.index)
+app.get('/api/stations', api.station)
+app.get('/api/programs', api.program)
+app.get('/api/episodes', api.episode)
 
 # redirect all others to the index (HTML5 history)
 # app.get('*', routes.index)
