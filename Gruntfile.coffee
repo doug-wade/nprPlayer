@@ -15,7 +15,8 @@ module.exports = (grunt) ->
         files: {
           'public/js/app.js': 'src/js/app.coffee',
           'public/js/controllers.js': 'src/js/*Ctrl.coffee',
-          'public/js/directives.js': 'src/js/nomPlayer.coffee',
+          'public/js/services.js': 'src/js/*Svc.coffee',
+          'public/js/directives.js': ['src/js/nomPlayer.coffee', 'src/js/nomEpisodeSelector.coffee' ],
           'routes/index.js': 'routes/index.coffee',
           'routes/api.js': 'routes/api.coffee',
           'routes/db_client.js': 'routes/db_client.coffee', 
@@ -57,7 +58,8 @@ module.exports = (grunt) ->
           }
         },
         files: {
-          'public/templates/nomPlayer.html': 'src/templates/nomPlayer.jade'
+          'public/templates/nomPlayer.html': 'src/templates/nomPlayer.jade',
+          'public/templates/nomEpisodeSelector.html': 'src/templates/nomEpisodeSelector.jade'
         }
       }
     },
