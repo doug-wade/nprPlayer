@@ -16,6 +16,7 @@ app.set('view engine', 'jade')
 app.use(express.logger('dev'))
 app.use(express.methodOverride())
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'media')))
 app.use(express.static(path.join(__dirname, 'bower_components')))
 app.use(app.router)
 
