@@ -1,8 +1,11 @@
+default_banner = '/* <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+
 module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-bower')
   grunt.loadNpmTasks('grunt-contrib-coffee')
   grunt.loadNpmTasks('grunt-contrib-copy')
   grunt.loadNpmTasks('grunt-contrib-jade')
+  grunt.loadNpmTasks('grunt-contrib-stylus')
   grunt.loadNpmTasks('grunt-contrib-uglify')
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-npm-install')
@@ -13,22 +16,16 @@ module.exports = (grunt) ->
     coffee: {
       compile_dev: {
         files: {
-          'public/js/app.js': 'src/js/app.coffee',
-          'public/js/controllers.js': 'src/js/*Ctrl.coffee',
-          'public/js/services.js': 'src/js/*Svc.coffee',
-          'public/js/directives.js': ['src/js/nomPlayer.coffee', 'src/js/nomEpisodeSelector.coffee' ],
-          'routes/index.js': 'routes/index.coffee',
-          'routes/api.js': 'routes/api.coffee',
-          'routes/db_client.js': 'routes/db_client.coffee', 
-          'web.js': 'src/web.coffee'
+          'public/js/app.js': 'src/angular/app.coffee',
+          'public/js/controllers.js': 'src/controllers/*.coffee',
+          'public/js/services.js': 'src/services/*.coffee',
+          'public/js/directives.js': 'src/directives/*.coffee',
+          'routes/index.js': 'src/express/index.coffee',
+          'routes/api.js': 'src/express/api.coffee',
+          'routes/db_client.js': 'src/express/db_client.coffee', 
+          'web.js': 'src/express/web.coffee'
         }
       },
-      bower: {
-        main: {
-          # TODO: dest: 'assets/'
-          dest: 'bower_components/'
-        }
-      }
       compile_prod: {
         files: {
           'src/app.js': 'src/js/*.coffee',
@@ -37,16 +34,28 @@ module.exports = (grunt) ->
         }
       }
     },
+    bower: {
+      install: {
+        options: {
+          target_dir: './public/vendor',
+          install: true,
+          cleanTargetDir: false,
+          cleanBowerDir: false,
+          copy: true,
+          layout: 'byType'
+        }
+      }
+    },
     html2js: {
       options: {
-        module: 'nprOnDemand.templates'
+      module: 'nprOnDemand.templates'
       },
       dev: {
-        src: ['src/templates/*.html'],
+        src: ['public/templates/*.html'],
         dest: 'public/js/templates.js'
       },
       prod: {
-        src: ['src/templates/*.html'],
+        src: ['public/templates/*.html'],
         dest: 'src/templates.js'
       }
     },
@@ -60,12 +69,26 @@ module.exports = (grunt) ->
         files: {
           'public/templates/nomPlayer.html': 'src/templates/nomPlayer.jade',
           'public/templates/nomEpisodeSelector.html': 'src/templates/nomEpisodeSelector.jade'
+          'public/templates/nomEpisodeLink.html': 'src/templates/nomEpisodeLink.jade'
+        }
+      }
+    },
+    stylus: {
+      compile: {
+        options: {
+          compress: false,
+          linenos: false,
+          firebug: false,
+          banner: default_banner
+        },
+        files: {
+          'public/css/app.css': 'src/stylus/app.styl'
         }
       }
     },
     uglify: {
       options: {
-        banner: '/* <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+        banner: default_banner
       },
       dist: {
         files: {
@@ -85,6 +108,6 @@ module.exports = (grunt) ->
     }
   })
 
-  grunt.registerTask('deps', ['npm-install', 'bower:main'])
+  grunt.registerTask('deps', ['npm-install', 'bower:install'])
   grunt.registerTask('compile_dev', ['jade:compile', 'html2js:dev', 'coffee:compile_dev'])
   grunt.registerTask('compile_prod', ['jade:compile', 'html2js:prod', 'coffee:compile_prod', 'uglify:dist'])
