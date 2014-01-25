@@ -1,5 +1,5 @@
 div(ng-controller="nomPlayerCtrl")
-  button(ng-click="play()", class="button", ng-show="!playing") Play
-  button(ng-click="stop()", class="button alert", ng-show="playing") Stop
+  button(ng-click="play()", class="button", ng-show="!playing", class="btn btn-info") Play
+  button(ng-click="stop()", class="button alert", ng-show="playing", class="btn btn-info") Stop
   p Playing audio: 
     strong {{ playing }}

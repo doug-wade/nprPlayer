@@ -5,12 +5,7 @@ class nomEpisodeCtrl
 
   constructor: ($scope, nomEpisodeSvc) ->
     @episode_svc = nomEpisodeSvc
-
     $scope.getStations = @get_stations
-    $scope.station = 'NPR'
-    $scope.program = 'Fresh Air'
-    $scope.episode = 'Monday'
-
     @scope = $scope
 
   get_stations: () ->

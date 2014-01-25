@@ -3,8 +3,11 @@
 # Directives
 class nomEpisodeSelector
   @options = () ->
-    restrict: 'E'
-    templateUrl: 'templates/nomEpisodeSelector.html'
     controller: 'nomEpisodeCtrl'
+    require: '^ngModel'
+    restrict: 'E'
+    scope:
+      episode: '='
+    templateUrl: 'templates/nomEpisodeSelector.html'
 
 angular.module('nprOnDemand').directive 'nomEpisodeSelector', nomEpisodeSelector.options

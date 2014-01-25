@@ -69,7 +69,7 @@ module.exports = (grunt) ->
         files: {
           'public/templates/nomPlayer.html': 'src/templates/nomPlayer.jade',
           'public/templates/nomEpisodeSelector.html': 'src/templates/nomEpisodeSelector.jade'
-          'public/templates/nomEpisodeLink.html': 'src/templates/nomEpisodeLink.jade'
+          'public/templates/nomEpisodeLink.html': 'src/templates/nomTrackList.jade'
         }
       }
     },
@@ -109,5 +109,5 @@ module.exports = (grunt) ->
   })
 
   grunt.registerTask('deps', ['npm-install', 'bower:install'])
-  grunt.registerTask('compile_dev', ['jade:compile', 'html2js:dev', 'coffee:compile_dev'])
-  grunt.registerTask('compile_prod', ['jade:compile', 'html2js:prod', 'coffee:compile_prod', 'uglify:dist'])
+  grunt.registerTask('compile_dev', ['jade:compile', 'html2js:dev', 'coffee:compile_dev', 'stylus'])
+  grunt.registerTask('compile_prod', ['jade:compile', 'html2js:prod', 'coffee:compile_prod', 'uglify:dist', 'stylus'])

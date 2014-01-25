@@ -8,8 +8,11 @@ html
     link(rel='sylesheet', href='bootstrap/dist/css/bootstrap.css')
   body
     div(ng-app="nprOnDemand")
-      nom_episode_selector
-      nom_player
+      div(ng-controller='nomAppCtrl')
+        h4 Current Station: {{ episode.station }}
+        nom_episode_selector(ng-model='episode')
+        nom_player(ng-model='episode')
+        nom_track_list(ng-model='episode')
 
     // Dependencies
     script(src="jquery/jquery.js")

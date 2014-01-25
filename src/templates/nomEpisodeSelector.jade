@@ -1,20 +1,19 @@
 div(ng-controller="nomEpisodeCtrl")
-  h4 Current Station: {{ station }}
   h4 Choose an episode:
   label Station:
     input(type="text" 
           typeahead="station for stations in getStations()" 
           typeahead-on-select="onStationChange()" 
-          ng-model="station" class="form-control")
+          ng-model="episode.station" class="form-control")
   label Program:
     input(type="text" 
           typeahead="program for program in getPrograms()" 
           typeahead-on-select="onProgramChange()" 
-          ng-model="program" 
+          ng-model="episode.program" 
           class="form-control")
   label Episode:
     input(type="text" 
           typeahead="episode for episode in episodes()" 
           typeahead-on-select="onEpisodeChange()" 
-          ng-model= "episode" 
+          ng-model= "episode.name" 
           class="form-control")

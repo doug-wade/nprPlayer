@@ -4,9 +4,8 @@
 class nomTrackLink
   @options = () ->
     restrict: 'E'
-    replace: true
     scope:
-      episode: '='
+      episode: '@'
     templateUrl: 'templates/nomEpisodeLink.html'
 
 angular.module('nprOnDemand').directive 'nomTrackLink', nomTrackLink.options
